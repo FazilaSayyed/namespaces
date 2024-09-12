@@ -1,35 +1,30 @@
-apiVersion:  v1  #acts a manuall to your system
+
+apiVersion: v1
 kind: Pod
-metadata:  #like a tag
-        name: mypod3
-        namespace: mynamespacesemployee
-        labels: 
-            app: newappemployee
-spec:
- containers:
+metadata: 
+  name: mypod3
+  namespace: mynamespacesemployee
+  labels:
+    app: newappemployee
+spec: 
+  containers: 
     - name: employee
       image: fazilasayyed/employee
-      resources: 
-          requests:
-            cpu: "50m"
-            memory: "90Mi"        
-      ports:  
-        - name: http
-          containerPort: 3000
+      ports:
+        - containerPort: 3000
           protocol: TCP
-
 ---
 apiVersion: v1
-kind:  Service
-metadata: 
-      name: employeeservice
-      namespace: mynamespacesemployee
+kind: Service
+metadata:
+  name: employeeservice
+  namespace: mynamespacesemployee
 spec:
-    type: LoadBalancer  
-    selector: 
-      app: newappemployee
-    ports:
-        - port: 3000
-          targetPort: 3000
-          name: nginx
-          protocol: TCP
+  type: LoadBalancer
+  selector:
+    app: newappemployee
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      name: employee
