@@ -22,7 +22,7 @@ spec:
 apiVersion: v1
 kind:  Service
 metadata: 
-      name: todoservice
+      name: employeeservice
       namespace: mynamespacesemployee
 spec:
     type: LoadBalancer  
