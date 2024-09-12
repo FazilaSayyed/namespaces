@@ -7,7 +7,7 @@ metadata:  #like a tag
             app: newappemployee
 spec:
  containers:
-    - name: mypod-cont1
+    - name: employee
       image: fazilasayyed/employee
       resources: 
           requests:
@@ -15,7 +15,7 @@ spec:
             memory: "90Mi"        
       ports:  
         - name: http
-          containerPort: 80
+          containerPort: 3000
           protocol: TCP
 
 ---
@@ -29,7 +29,7 @@ spec:
     selector: 
       app: newappemployee
     ports:
-        - port: 80
-          targetPort: 80
+        - port: 3000
+          targetPort: 3000
           name: nginx
           protocol: TCP
