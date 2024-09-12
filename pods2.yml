@@ -7,15 +7,15 @@ metadata:  #like a tag
             app: newappstudent
 spec:
  containers:
-    - name: mypod-cont1
+    - name: student
       image: fazilasayyed/student
       resources: 
           requests:
             cpu: "50m"
             memory: "90Mi"        
       ports:  
-        - name: http
-          containerPort: 80
+        - name : tomcat
+          containerPort: 8080
           protocol: TCP
 
 ---
@@ -29,7 +29,7 @@ spec:
     selector: 
       app: newappstudent
     ports:
-        - port: 80
-          targetPort: 80
-          name: nginx
+        - port: 8080
+          targetPort: 8080
+          name: student
           protocol: TCP
