@@ -2,13 +2,13 @@ apiVersion:  v1  #acts a manuall to your system
 kind: Pod
 metadata:  #like a tag
         name: mypod1
-        namespace: todopod
+        namespace: mynamespacestodo
         labels: 
-            app: newapp
+            app: newapptodo
 spec:
  containers:
     - name: mypod-cont1
-      image: nginx:latest
+      image: fazilasayyed/todo
       resources: 
           requests:
             cpu: "50m"
@@ -23,11 +23,11 @@ apiVersion: v1
 kind:  Service
 metadata: 
       name: todoservice
-      namespace: todopod
+      namespace: mynamespacestodo
 spec:
-    type: NodePort  
+    type: LoadBalancer  
     selector: 
-      app: new-app
+      app: newapptodo
     ports:
         - port: 80
           targetPort: 80

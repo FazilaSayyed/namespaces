@@ -1,0 +1,35 @@
+apiVersion:  v1  #acts a manuall to your system
+kind: Pod
+metadata:  #like a tag
+        name: mypod2
+        namespace: mynamespacesstudent
+        labels: 
+            app: newappstudent
+spec:
+ containers:
+    - name: mypod-cont1
+      image: fazilasayyed/student
+      resources: 
+          requests:
+            cpu: "50m"
+            memory: "90Mi"        
+      ports:  
+        - name: http
+          containerPort: 80
+          protocol: TCP
+
+---
+apiVersion: v1
+kind:  Service
+metadata: 
+      name: studentservice
+      namespace: mynamespacesstudent
+spec:
+    type: LoadBalancer  
+    selector: 
+      app: newappstudent
+    ports:
+        - port: 80
+          targetPort: 80
+          name: nginx
+          protocol: TCP
